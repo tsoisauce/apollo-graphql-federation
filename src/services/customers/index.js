@@ -54,8 +54,8 @@ const resolvers = {
     }
   },
   User: {
-    __resolveReference(user, { fetchUserById }) {
-      return fetchUserById(user.id);
+    __resolveReference(customer, { fetchCustomerById }) {
+      return fetchCustomerById(customer.id);
     }
   }
 };
