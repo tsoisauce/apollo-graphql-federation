@@ -21,7 +21,7 @@ const typeDefs = gql`
     """
     Get information and test resolvers
     """
-    info: String!
+    infoCustomers: String!
     """
     All customers is used to query all customers.
     """
@@ -32,10 +32,7 @@ const typeDefs = gql`
     customerByEmail(email: String!): [Customer!]!
   }
 
-  """
-  Customer is the person placing the order
-  """
-  type Customer @key(fields: "id") {
+  type Customer {
     id: ID!
     firstName: String!
     lastName: String!
@@ -45,7 +42,7 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    info: () => "This is a graph layer for customer information.",
+    infoCustomers: () => "This is a graph layer for customer information.",
     allCustomers: () => customers,
     customerByEmail: (parent, args, context, info) => {
       return customers.filter(customer => {
