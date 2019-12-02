@@ -1,1 +1,3 @@
-# apollo-graphql-federation
+# Apollo GraphQL Federation
+
+Apollo GraphQL Federation demo.
