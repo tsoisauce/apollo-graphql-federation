@@ -15,9 +15,9 @@
     "nodemon": "^2.0.1"
   },
   "scripts": {
-    "start-gateway": "nodemon ./src/gateway.js",
-    "start-service-customers": "nodemon ./src/services/customers/index.js",
-    "start-service-orders": "nodemon ./src/services/orders/index.js",
+    "start-gateway": "nodemon ./gateway.js",
+    "start-service-customers": "nodemon ./services/customers/index.js",
+    "start-service-orders": "nodemon ./services/orders/index.js",
     "start-services": "concurrently --kill-others \"yarn:start-service-*\""
   }
 }
