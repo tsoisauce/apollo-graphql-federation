@@ -33,7 +33,7 @@ const typeDefs = gql`
   }
 
   type Customer @key(fields: "id") {
-    id: ID
+    id: ID!
     firstName: String!
     lastName: String!
     email: String!

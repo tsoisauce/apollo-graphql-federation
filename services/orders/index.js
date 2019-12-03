@@ -30,7 +30,7 @@ const typeDefs = gql`
   }
 
   extend type Customer @key(fields: "id") {
-    id: ID @external
+    id: ID! @external
   }
 `;
 
