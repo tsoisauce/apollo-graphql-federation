@@ -7,17 +7,17 @@ Apollo GraphQL Federation demo.
 Install dependencies.
 
 ```bash
-yarn
+npm install
 ```
 
 Start federated services.
 
 ```bash
-start-services
+npm start-services
 ```
 
 Start Gateway (Data Graph).
 
 ```bash
-start-gateway
+npm start-gateway
 ```
