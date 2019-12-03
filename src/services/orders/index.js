@@ -4,11 +4,11 @@ const { buildFederatedSchema } = require("@apollo/federation");
 let orders = [
   {
     id: "order-1",
-    purchasedBy: "customer-1"
+    customer: "customer-1"
   },
   {
     id: "order-2",
-    purchasedBy: "customer-2"
+    customer: "customer-2"
   }
 ];
 
@@ -26,7 +26,11 @@ const typeDefs = gql`
 
   type Order {
     id: ID!
-    purchasedBy: String!
+    customer: Customer
+  }
+
+  extend type Customer @key(fields: "id") {
+    id: ID @external
   }
 `;
 
@@ -35,9 +39,9 @@ const resolvers = {
     infoOrders: () => "This is a graph layer for orders information.",
     allOrders: () => orders
   },
-  User: {
-    __resolveReference(order, { fetchOrderById }) {
-      return fetchOrderById(order.id);
+  Order: {
+    customer(order) {
+      return { __typename: "Customer", id: order.customer };
     }
   }
 };

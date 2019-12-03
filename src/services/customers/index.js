@@ -32,8 +32,8 @@ const typeDefs = gql`
     customerByEmail(email: String!): [Customer!]!
   }
 
-  type Customer {
-    id: ID!
+  type Customer @key(fields: "id") {
+    id: ID
     firstName: String!
     lastName: String!
     email: String!
@@ -50,9 +50,9 @@ const resolvers = {
       });
     }
   },
-  User: {
-    __resolveReference(customer, { fetchCustomerById }) {
-      return fetchCustomerById(customer.id);
+  Customer: {
+    __resolveReference(reference) {
+      return customers.find(customer => reference.id === customer.id)
     }
   }
 };
