@@ -33,6 +33,10 @@ const typeDefs = gql`
     Creates order for customer using the customer's email address.
     """
     createOrder(customer: String!): Order!
+    """
+    Deletes customer by order id
+    """
+    deleteOrder(id: ID!): [Order]
   }
 
   type Order {
@@ -51,17 +55,23 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     infoOrders: () => "This is a graph layer for orders information.",
-    allOrders: () => orders,
+    allOrders: () => orders
   },
   Mutation: {
-    createOrder: (parent, args, context, info) =>  {
-      const orderId = orders.length + 1
+    createOrder: (parent, args, context, info) => {
+      const orderId = orders.length + 1;
       const order = {
         id: `order-${orderId}`,
         customer: args.customer
-      }
-      orders.push(order)
-      return order
+      };
+      orders.push(order);
+      return order;
+    },
+    deleteOrder: (parent, args, context, info) => {
+      return orders.splice(
+        orders.findIndex(item => item.id === args.id),
+        1
+      );
     }
   },
   Order: {
@@ -71,7 +81,7 @@ const resolvers = {
   },
   Customer: {
     orders(customer) {
-      return orders.filter(order => order.customer === customer.email)
+      return orders.filter(order => order.customer === customer.email);
     }
   }
 };

@@ -14,6 +14,7 @@ graph TD
 
 ## Installation
 
-1. Install Dependencies `yarn install`
-2. Start Federated Services `yarn start-services`
-3. Start Gateway (Data Graph) `yarn start-gateway`
+1. Make sure you are using the latest Node LTS `nvm use`
+2. Install Dependencies `yarn install`
+3. Start Federated Services `yarn start-services`
+4. Start Gateway (Data Graph) `yarn start-gateway`
