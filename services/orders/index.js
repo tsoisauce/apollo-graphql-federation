@@ -26,7 +26,7 @@ const typeDefs = gql`
 
   type Mutation {
     """
-    Creates order for customer.
+    Creates order for customer using the customer's email address.
     """
     createOrder(customer: String!): Order!
   }

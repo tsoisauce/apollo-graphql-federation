@@ -33,6 +33,9 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    """
+    Creates customer
+    """
     createCustomer(firstName: String!, lastName: String!, email: String!): Customer
   }
 
