@@ -32,6 +32,8 @@ Refer to `DOCS` inside [Graphiql](http://localhost:4000) for more information on
 query {
   allOrders {
     id
+    financialStatus
+    fulfillmentStatus
     customer {
       id
       firstName
@@ -65,8 +67,10 @@ query {
 
 ```graphql
 mutation {
-  deleteOrder(id: "order-3") {
+  deleteOrder(id: "order-2") {
     id
+    financialStatus
+    fulfillmentStatus
     customer {
       id
       firstName
