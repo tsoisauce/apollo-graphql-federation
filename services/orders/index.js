@@ -28,7 +28,7 @@ const typeDefs = gql`
     """
     Creates order for customer.
     """
-    createOrder(customer: String!): Order!
+    createOrder(email: String!): Order!
   }
 
   type Order {
@@ -51,7 +51,7 @@ const resolvers = {
       const orderId = orders.length + 1
       const order = {
         id: `order-${orderId}`,
-        customer: args.customer
+        customer: args.customer.email
       }
       orders.push(order)
       return order
@@ -59,7 +59,7 @@ const resolvers = {
   },
   Order: {
     customer(order) {
-      return { __typename: "Customer", email: order.customer };
+      return { __typename: "Customer", email: order.email };
     }
   }
 };
