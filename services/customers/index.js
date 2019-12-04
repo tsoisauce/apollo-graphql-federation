@@ -36,7 +36,15 @@ const typeDefs = gql`
     """
     Creates customer
     """
-    createCustomer(firstName: String!, lastName: String!, email: String!): Customer
+    createCustomer(
+      firstName: String!
+      lastName: String!
+      email: String!
+    ): Customer
+    """
+    Deletes customer record by email
+    """
+    deleteCustomer(email: String!): [Customer]
   }
 
   type Customer @key(fields: "email") {
@@ -59,20 +67,26 @@ const resolvers = {
   },
   Mutation: {
     createCustomer: (parent, args, context, info) => {
-      const customerId = customers.length + 1
+      const customerId = customers.length + 1;
       const customer = {
         id: `customer-${customerId}`,
         firstName: args.firstName,
         lastName: args.lastName,
         email: args.email
-      }
-      customers.push(customer)
-      return customer
+      };
+      customers.push(customer);
+      return customer;
+    },
+    deleteCustomer: (parent, args, context, info) => {
+      return customers.splice(
+        customers.findIndex(customer => customer.email === args.email),
+        1
+      );
     }
   },
   Customer: {
     __resolveReference(reference) {
-      return customers.find(customer => reference.email === customer.email)
+      return customers.find(customer => reference.email === customer.email);
     }
   }
 };
