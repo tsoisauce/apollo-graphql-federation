@@ -4,10 +4,14 @@ const { buildFederatedSchema } = require("@apollo/federation");
 let orders = [
   {
     id: "order-1",
+    financialStatus: "paid",
+    fulfillmentStatus: "pending",
     customer: "janedoe@example.com"
   },
   {
     id: "order-2",
+    financialStatus: "refunded",
+    fulfillmentStatus: "fulfilled",
     customer: "janedoe@example.com"
   }
 ];
@@ -33,11 +37,14 @@ const typeDefs = gql`
 
   type Order {
     id: ID!
+    financialStatus: String!
+    fulfillmentStatus: String!
     customer: Customer!
   }
 
   extend type Customer @key(fields: "email") {
     email: String! @external
+    orders: [Order]
   }
 `;
 
@@ -60,6 +67,11 @@ const resolvers = {
   Order: {
     customer(order) {
       return { __typename: "Customer", email: order.customer };
+    }
+  },
+  Customer: {
+    orders(customer) {
+      return orders.filter(order => order.customer === customer.email)
     }
   }
 };
