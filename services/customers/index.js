@@ -36,7 +36,7 @@ const typeDefs = gql`
     createCustomer(firstName: String!, lastName: String!, email: String!): Customer
   }
 
-  type Customer @key(fields: "id") {
+  type Customer @key(fields: "email") {
     id: ID!
     firstName: String!
     lastName: String!
@@ -69,7 +69,7 @@ const resolvers = {
   },
   Customer: {
     __resolveReference(reference) {
-      return customers.find(customer => reference.id === customer.id)
+      return customers.find(customer => reference.email === customer.email)
     }
   }
 };
