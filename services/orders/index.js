@@ -15,13 +15,20 @@ let orders = [
 const typeDefs = gql`
   type Query {
     """
-    Get information and test resolvers
+    Get information and test resolvers.
     """
     infoOrders: String!
     """
     All customers is used to query all customers.
     """
     allOrders: [Order!]!
+  }
+
+  type Mutation {
+    """
+    Creates order for customer.
+    """
+    createOrder(customer: String): Order
   }
 
   type Order {
@@ -37,7 +44,18 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     infoOrders: () => "This is a graph layer for orders information.",
-    allOrders: () => orders
+    allOrders: () => orders,
+  },
+  Mutation: {
+    createOrder: (parent, args, context, info) =>  {
+      const orderId = orders.length + 1
+      const order = {
+        id: `order-${orderId}`,
+        customer: args.customer
+      }
+      orders.push(order)
+      return order
+    }
   },
   Order: {
     customer(order) {
