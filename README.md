@@ -18,13 +18,15 @@ graph TD
 2. Install Dependencies `yarn install`
 3. Start Federated Services `yarn start-services`
 4. Start Gateway (Data Graph) `yarn start-gateway`
-5. Visit `http://localhost:4000` in browser
+5. Visit `http://localhost:4000` in browser to launch GraphQL Playground (Graphiql)
 
 ## Queries and Mutations
 
 ### Example Queries
 
-allOrders: Retrieve all orders.
+Refer to `DOCS` inside [Graphiql](http://localhost:4000) for more information on queries and muations.
+
+`allOrders`: Retrieve all orders.
 
 ```graphql
 query {
@@ -40,7 +42,7 @@ query {
 }
 ```
 
-customerByEmail: Retrieves customer information by email including all orders placed by customer.
+`customerByEmail`: Retrieves customer information by email including all orders placed by customer.
 
 ```graphql
 query {
@@ -59,7 +61,7 @@ query {
 
 ### Example Mutations
 
-deleteOrder: Deletes one order.
+`deleteOrder`: Deletes one order.
 
 ```graphql
 mutation {
