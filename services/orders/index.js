@@ -5,7 +5,7 @@ let orders = [
   {
     id: "order-1",
     financialStatus: "paid",
-    fulfillmentStatus: "pending",
+    fulfillmentStatus: "processing",
     customer: "janedoe@example.com"
   },
   {
@@ -62,6 +62,8 @@ const resolvers = {
       const orderId = orders.length + 1;
       const order = {
         id: `order-${orderId}`,
+        financialStatus: "paid",
+        fulfillmentStatus: "processing",
         customer: args.customer
       };
       orders.push(order);
