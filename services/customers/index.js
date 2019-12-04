@@ -32,6 +32,10 @@ const typeDefs = gql`
     customerByEmail(email: String!): [Customer!]!
   }
 
+  type Mutation {
+    createCustomer(firstName: String!, lastName: String!, email: String!): Customer
+  }
+
   type Customer @key(fields: "id") {
     id: ID!
     firstName: String!
@@ -48,6 +52,19 @@ const resolvers = {
       return customers.filter(customer => {
         return customer.email === args.email;
       });
+    }
+  },
+  Mutation: {
+    createCustomer: (parent, args, context, info) => {
+      const customerId = customers.length + 1
+      const customer = {
+        id: `customer-${customerId}`,
+        firstName: args.firstName,
+        lastName: args.lastName,
+        email: args.email
+      }
+      customers.push(customer)
+      return customer
     }
   },
   Customer: {
