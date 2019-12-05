@@ -18,6 +18,7 @@
     "start-gateway": "nodemon ./gateway.js",
     "start-service-customers": "nodemon ./services/customers/index.js",
     "start-service-orders": "nodemon ./services/orders/index.js",
+    "start-service-products": "nodemon ./services/products/index.js",
     "start-services": "concurrently --kill-others \"yarn:start-service-*\""
   }
 }
