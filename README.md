@@ -20,6 +20,8 @@ graph TD
 4. Start Gateway (Data Graph) `yarn start-gateway`
 5. Visit `http://localhost:4000` in browser to launch GraphQL Playground (Graphiql)
 
+tip: if you need to kill any tcp ports `lsof -ti tcp:<PORT_NAME> | xargs kill`
+
 ## Queries and Mutations
 
 ### Example Queries
