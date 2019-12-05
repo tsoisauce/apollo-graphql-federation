@@ -9,6 +9,8 @@ graph TD
   C-->B
   B-->D(Orders)
   D-->B
+  B-->E(Products)
+  E-->B
   B--response-->A
 ```
 
