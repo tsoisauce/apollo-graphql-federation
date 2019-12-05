@@ -6,13 +6,15 @@ let orders = [
     id: "order-1",
     financialStatus: "paid",
     fulfillmentStatus: "processing",
-    customer: "janedoe@example.com"
+    customer: "janedoe@example.com",
+    lineItems: "widget:1"
   },
   {
     id: "order-2",
     financialStatus: "refunded",
     fulfillmentStatus: "fulfilled",
-    customer: "janedoe@example.com"
+    customer: "janedoe@example.com",
+    lineItems: "widget:2"
   }
 ];
 
@@ -44,10 +46,16 @@ const typeDefs = gql`
     financialStatus: String!
     fulfillmentStatus: String!
     customer: Customer!
+    lineItems: Product!
   }
 
   extend type Customer @key(fields: "email") {
     email: String! @external
+    orders: [Order]
+  }
+
+  extend type Product @key(fields: "sku") {
+    sku: String! @external
     orders: [Order]
   }
 `;
@@ -79,6 +87,9 @@ const resolvers = {
   Order: {
     customer(order) {
       return { __typename: "Customer", email: order.customer };
+    },
+    lineItems(order) {
+      return { __typename: "Product", sku: order.lineItems}
     }
   },
   Customer: {

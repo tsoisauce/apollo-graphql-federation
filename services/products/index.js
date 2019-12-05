@@ -37,7 +37,7 @@ const typeDefs = gql`
     allProducts: [Product!]!
   },
 
-  type Product {
+  type Product @key(fields: "sku") {
     id: ID!
     title: String!
     sku: String!
@@ -51,6 +51,11 @@ const resolvers = {
     infoProducts: () => "This is a graph layer for product information.",
     allProducts: () => products
   },
+  Product: {
+    __resolveReference(reference) {
+      return products.find(product => reference.sku === product.sku);
+    }
+  }
 };
 
 const server = new ApolloServer({
