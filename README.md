@@ -87,7 +87,9 @@ mutation {
 
 ## Apollo Data Graph Manager
 
-Login or create an account [Apollo Data Graph Manager](https://engine.apollographql.com/login)
+1. Login or create an account [Apollo Data Graph Manager](https://engine.apollographql.com/login). 
+2. Update `ENGINE_API_KEY` in `.env` file.
+3. Push schema to Data Graph Manager from root `npx apollo service:push --endpoint=http://localhost:4000`
 
 ## Built with
 
