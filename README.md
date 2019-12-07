@@ -99,11 +99,12 @@ graph LR
 
 note: use `npx` if not installed globally
 
-1. Login or create an account [Apollo Data Graph Manager](https://engine.apollographql.com/login).
-2. Update `ENGINE_API_KEY` in `.env` file.
-3. Push schema to Data Graph Manager from root `npx apollo service:push --endpoint=http://localhost:4000`
-4. Register each [federated services](https://www.apollographql.com/docs/graph-manager/federation/#registering-federated-services) `apollo service:push --serviceName="customers" --serviceURL="http://customers-graphql.svc.cluster.local:4001/" --endpoint="http://localhost:4001/"`
-5. List all federated services: `apollo service:list`
+1. Run all services `yarn start-services` and gateway `yarn start-gateway`
+2. Login or create an account [Apollo Data Graph Manager](https://engine.apollographql.com/login).
+3. Update `ENGINE_API_KEY` in `.env` file.
+4. Push schema to Data Graph Manager from root `apollo service:push --endpoint=http://localhost:4000`
+5. Register each [federated services](https://www.apollographql.com/docs/graph-manager/federation/#registering-federated-services) `apollo service:push --serviceName="customers" --serviceURL="http://customers-graphql.svc.cluster.local:4001/" --endpoint="http://localhost:4001/"`
+6. List all federated services: `apollo service:list`
 
 TODO: connect to CI/CD process
 
