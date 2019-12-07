@@ -87,9 +87,17 @@ mutation {
 
 ## Apollo Graph Manager
 
+[Apollo Graph Manager](https://www.apollographql.com/docs/graph-manager/) (formerly Apollo Engine) is a cloud service that helps you manage, validate, and secure your organization's data graph.
+
+```mermaid
+graph LR
+  A(Data Graph Gateway)-->B(Apollo Graph Manager)
+  B-->A
+```
+
 ### Publish Schema to Graph Manager
 
-note: user `npx` if note installed globally
+note: use `npx` if not installed globally
 
 1. Login or create an account [Apollo Data Graph Manager](https://engine.apollographql.com/login).
 2. Update `ENGINE_API_KEY` in `.env` file.
@@ -104,3 +112,4 @@ TODO: connect to CI/CD process
 - [GraphQL](https://github.com/graphql)
 - [Apollo Server](https://github.com/apollographql/apollo-server)
 - [Apollo Federation](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-federation)
+- [Apollo Graph Manager](https://www.apollographql.com/docs/graph-manager/)
