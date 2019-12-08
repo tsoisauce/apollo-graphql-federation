@@ -2,16 +2,22 @@
 
 Apollo GraphQL Federation demo.
 
+## Federated Service Demo
+
+This project is used to demo joing Graph layers from various languages and libraries.
+
 ```mermaid
 graph TD
-  A(Client)--request-->B(Data Graph Gateway)
-  B-->C(Customers)
-  C-->B
-  B-->D(Orders)
-  D-->B
-  B-->E(Products)
-  E-->B
-  B--response-->A
+  Client(Client)--request-->Gateway(Data Graph Gateway [Node])
+  Gateway-->Customers(Customers [Node])
+  Customers-->Gateway
+  Gateway-->Orders(Orders [Node])
+  Orders-->Gateway
+  Gateway-->Products(Products [Node])
+  Products-->Gateway
+  Gateway-->Reviews(Reviews [Ruby])
+  Reviews-->Gateway
+  Gateway--response-->Client
 ```
 
 ## Installation
