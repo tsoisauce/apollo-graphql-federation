@@ -2,6 +2,7 @@
 
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'sinatra/json'
 require 'dotenv/load'
 
 # initalize activerecord DB connection
@@ -15,8 +16,15 @@ ActiveRecord::Base.establish_connection(
 
 # Graph layer for review service
 class ReviewApp < Sinatra::Base
-  get '/' do
-    'It Works!'
+  get '/hello.json' do
+    message = { success: true, message: 'hello' }
+    json message
+  end
+
+  # endpoint for reviews
+  get '/reviews' do
+    @reviews = Reviews.all
+    json @reviews
   end
 end
 
