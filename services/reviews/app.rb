@@ -3,7 +3,11 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/json'
+require 'rack/contrib'
 require 'dotenv/load'
+require './models'
+
+require_relative 'graphql/schema'
 
 # initalize activerecord DB connection
 ActiveRecord::Base.establish_connection(
@@ -15,7 +19,13 @@ ActiveRecord::Base.establish_connection(
 )
 
 # Graph layer for review service
-class ReviewApp < Sinatra::Base
+class ReviewsApp < Sinatra::Base
+  use Rack::PostBodyContentTypeParser
+
+  get '/' do
+    'It Works!'
+  end
+
   get '/hello.json' do
     message = { success: true, message: 'hello' }
     json message
@@ -26,6 +36,14 @@ class ReviewApp < Sinatra::Base
     @reviews = Reviews.all
     json @reviews
   end
-end
 
-require './models'
+  # graphql endpoint
+  post '/graphql' do
+    result = ReviewsAppSchema.execute(
+      params[:query],
+      variables: params[:variables],
+      context: { current_user: nil }
+    )
+    json result
+  end
+end

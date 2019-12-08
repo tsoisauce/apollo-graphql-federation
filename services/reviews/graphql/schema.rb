@@ -4,6 +4,6 @@ require 'graphql'
 require_relative 'query'
 
 # Reviews schema
-class ConferenceAppSchema < GraphQL::Schema
+class ReviewsAppSchema < GraphQL::Schema
   query QueryType
 end
