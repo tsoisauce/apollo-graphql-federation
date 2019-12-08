@@ -4,7 +4,7 @@
 class CreateReviewsTable < ActiveRecord::Migration[5.2]
   def change
     create_table :reviews do |t|
-      t.string :product_id
+      t.string :product_sku
       t.integer :rating, limit: 8
       t.string :title
       t.text :review
@@ -14,7 +14,7 @@ class CreateReviewsTable < ActiveRecord::Migration[5.2]
       t.timestamps
     end
     # indexes
-    add_index :reviews, :product_id
+    add_index :reviews, :product_sku
     add_index :reviews, :customer
   end
 end

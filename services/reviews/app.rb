@@ -19,3 +19,5 @@ class ReviewApp < Sinatra::Base
     'It Works!'
   end
 end
+
+require './models'

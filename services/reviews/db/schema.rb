@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2019_12_08_033455) do
   enable_extension "plpgsql"
 
   create_table "reviews", force: :cascade do |t|
-    t.string "product_id"
+    t.string "product_sku"
     t.bigint "rating"
     t.string "title"
     t.text "review"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_12_08_033455) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer"], name: "index_reviews_on_customer"
-    t.index ["product_id"], name: "index_reviews_on_product_id"
+    t.index ["product_sku"], name: "index_reviews_on_product_sku"
   end
 
 end
