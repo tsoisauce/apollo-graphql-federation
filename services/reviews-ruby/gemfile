@@ -14,3 +14,4 @@ gem 'tux', '~> 0.3.0' # https://github.com/cldwalker/tux
 gem 'graphql', '~>1.8.0' # https://github.com/rmosolgo/graphql-ruby
 gem 'sinatra-contrib', '~>2.0.4' # https://github.com/sinatra/sinatra/tree/master/sinatra-contrib
 gem 'rack-contrib', '~> 2.1' # https://github.com/rack/rack-contrib
+gem 'apollo-federation' # https://github.com/Gusto/apollo-federation-ruby
