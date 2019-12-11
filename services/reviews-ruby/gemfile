@@ -1,0 +1,16 @@
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
+
+gem 'sinatra', '~>2.0.4' # https://github.com/sinatra/sinatra/
+gem 'puma', '~> 4.0' # https://github.com/puma/puma
+gem 'json', '~> 2.2' # https://github.com/flori/json
+gem 'activerecord', '~> 5.0', '>= 5.0.0.1' # https://github.com/rails/rails/tree/master/activerecord
+gem 'dotenv-rails', '~> 2.1', '>= 2.1.1' # https://github.com/bkeepers/dotenv/
+gem 'sinatra-activerecord', '~> 2.0', '>= 2.0.14' # https://github.com/sinatra-activerecord/sinatra-activerecord
+gem 'rake', '~> 13.0', '>= 13.0.1' # https://github.com/ruby/rake
+gem 'pg', '~> 1.1', '>= 1.1.4' # https://github.com/ged/ruby-pg
+gem 'tux', '~> 0.3.0' # https://github.com/cldwalker/tux
+gem 'graphql', '~>1.8.0' # https://github.com/rmosolgo/graphql-ruby
+gem 'sinatra-contrib', '~>2.0.4' # https://github.com/sinatra/sinatra/tree/master/sinatra-contrib
+gem 'rack-contrib', '~> 2.1' # https://github.com/rack/rack-contrib
