@@ -6,7 +6,7 @@ REVIEWS = [
   {
     id: 'review-1',
     sku: 'widget:1',
-    rating: 4, 
+    rating: 4,
     title: 'AMAZING PRODUCT!!!!',
     review: 'Best one yet. A++ will buy again.',
     customer: 'johndoe@example.com',
@@ -14,11 +14,11 @@ REVIEWS = [
   {
     id: 'review-2',
     sku: 'widget:2',
-    rating: 5, 
+    rating: 5,
     title: 'Cream helped fat husband',
     review: 'This diet cream help my husband lose weight, he was fat fuck now he not, fi star the end.',
     customer: 'janedoe@example.com',
-  }
+  },
 ].freeze
 
 # Review TypeDef
@@ -61,10 +61,24 @@ class Product < BaseObject
   end
 end
 
+class Query < BaseObject
+  field :infoReviews, String, null: true
+  field :allReviews, [Review], null: true
+
+  def info_reviews
+    'This is a Ruby graph layer for reviews information.'
+  end
+
+  def all_reviews
+    REVIEWS
+  end
+end
+
 class ReviewSchema < GraphQL::Schema
   include ApolloFederation::Schema
 
   orphan_types Customer, Review, Product
+  query(Query)
 end
 
 GraphQLServer.run(ReviewSchema, Port: 4004)

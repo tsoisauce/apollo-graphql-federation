@@ -63,5 +63,5 @@ const server = new ApolloServer({
 });
 
 server.listen(4003).then(({ url }) => {
-  console.log(`📊‍ Orders Server ready at ${url}`);
+  console.log(`📊‍ Product Server ready at ${url}`);
 });
