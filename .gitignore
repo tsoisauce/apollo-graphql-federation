@@ -12,3 +12,4 @@ yarn-error.log*
 
 # node modules
 node_modules/
+apollo.config.js
