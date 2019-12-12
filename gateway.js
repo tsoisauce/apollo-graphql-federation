@@ -1,5 +1,6 @@
 const { ApolloServer } = require("apollo-server");
 const { ApolloGateway } = require("@apollo/gateway");
+require('dotenv').config();
 
 const gateway = new ApolloGateway({
   serviceList: [
@@ -12,7 +13,10 @@ const gateway = new ApolloGateway({
 
 const server = new ApolloServer({
   gateway,
-  subscriptions: false
+  subscriptions: false,
+  engine: {
+    apiKey: process.env.ENGINE_API_KEY,
+  }
 });
 
 server.listen().then(({ url }) => {
