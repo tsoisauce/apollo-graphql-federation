@@ -8,14 +8,14 @@ This project is used to demo joing Graph layers from various languages and libra
 
 ```mermaid
 graph TD
-  Client(Client)--request-->Gateway(Data Graph Gateway [Node])
-  Gateway-->Customers(Customers [Node])
+  Client(Client)--request-->Gateway(Data Graph Gateway - Node)
+  Gateway-->Customers(Customers - Node)
   Customers-->Gateway
-  Gateway-->Orders(Orders [Node])
+  Gateway-->Orders(Orders - Node)
   Orders-->Gateway
-  Gateway-->Products(Products [Node])
+  Gateway-->Products(Products - Node)
   Products-->Gateway
-  Gateway-->Reviews(Reviews [Ruby])
+  Gateway-->Reviews(Reviews - Ruby)
   Reviews-->Gateway
   Gateway--response-->Client
 ```
