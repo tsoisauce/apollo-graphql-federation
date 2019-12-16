@@ -1,6 +1,6 @@
 # Apollo GraphQL Federation
 
-Apollo GraphQL Federation demo.
+Apollo GraphQL Federation demo in multiple languages.
 
 ## Federated Service Demo
 
