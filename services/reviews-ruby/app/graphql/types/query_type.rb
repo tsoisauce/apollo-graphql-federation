@@ -1,4 +1,23 @@
 module Types
+  REVIEWS = [
+    {
+      id: 'review-1',
+      sku: 'widget:1',
+      rating: 4,
+      title: 'AMAZING PRODUCT!!!!',
+      review: 'Best one yet. A++ will buy again.',
+      customer: 'johndoe@example.com',
+    },
+    {
+      id: 'review-2',
+      sku: 'widget:2',
+      rating: 5,
+      title: 'Cream helped fat husband',
+      review: 'This diet cream help my husband lose weight, he was fat fuck now he not, fi star the end.',
+      customer: 'janedoe@example.com',
+    },
+  ].freeze
+
   class QueryType < Types::BaseObject
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
@@ -8,6 +27,13 @@ module Types
       description: "An example field added by the generator"
     def test_field
       "Hello World!"
+    end
+
+    # all reviews query
+    field :all_reviews, [Types::ReviewType], null: false,
+      description: "Query for all reviews"
+    def all_reviews
+      REVIEWS
     end
   end
 end
