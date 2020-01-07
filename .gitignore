@@ -49,3 +49,6 @@ services/reviews-ruby/node_modules
 services/reviews-ruby/yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# next.js
+client/.next
