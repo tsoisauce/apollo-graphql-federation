@@ -1,3 +1,4 @@
+const { MemcachedCache } = require('apollo-server-cache-memcached');
 const { ApolloServer } = require("apollo-server");
 const { ApolloGateway } = require("@apollo/gateway");
 require('dotenv').config();
@@ -16,6 +17,12 @@ const server = new ApolloServer({
   subscriptions: false,
   engine: {
     apiKey: process.env.ENGINE_API_KEY,
+  },
+  persistedQueries: {
+    cache: new MemcachedCache(
+      ['memcached-server-1', 'memcached-server-2', 'memcached-server-3'],
+      { retries: 10, retry: 10000 }, // Options
+    ),
   }
 });
 
