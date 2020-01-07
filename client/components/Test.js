@@ -2,8 +2,15 @@
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
-const TEST = gql`{
-    testField
+const TEST = gql`
+  {
+    allReviews {
+      id
+      title
+      review
+      rating
+      customer
+    }
   }
 `;
 
@@ -12,10 +19,18 @@ const Test = () => {
     notifyOnNetworkStatusChange: true
   });
   
-  if (data && data.testField) {
-    const testMessage = data.testField
+  if (data && data.allReviews) {
+    const reviews = data.allReviews
     return (
-      <h1>{testMessage}</h1>
+    <>
+      <ul>
+        {reviews.map(review => {
+          return (
+        <li key={review.id}>{review.title} - {review.review}</li>
+          )
+        })}
+      </ul>
+    </>
     )
   } else {
     return (

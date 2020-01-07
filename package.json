@@ -22,6 +22,7 @@
     "start-service-orders": "nodemon ./services/orders-node/index.js",
     "start-service-products": "nodemon ./services/products-node/index.js",
     "start-service-reviews": "cd ./services/reviews-ruby && rails s -p 4004",
-    "start-services": "concurrently --kill-others \"yarn:start-service-*\""
+    "start-services": "concurrently --kill-others \"yarn:start-service-*\"",
+    "start-client": "cd ./client && yarn dev"
   }
 }
