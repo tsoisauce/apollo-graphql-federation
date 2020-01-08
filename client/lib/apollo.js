@@ -10,6 +10,7 @@ const link = createPersistedQueryLink({ useGETForHashedQueries: true }).concat(
 );
 
 const client = new ApolloClient({
+  connectToDevTools: true,
   cache: new InMemoryCache(),
   link: link,
 });
