@@ -2,7 +2,7 @@
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
-const TEST = gql`
+const ALL_REVIEWS = gql`
   {
     allReviews {
       id
@@ -13,7 +13,7 @@ const TEST = gql`
 `;
 
 const Test = () => {
-  const { loading, error, data, fetchMore } = useQuery(TEST, {
+  const { loading, error, data, fetchMore } = useQuery(ALL_REVIEWS, {
     notifyOnNetworkStatusChange: true
   });
   
