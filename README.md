@@ -26,6 +26,7 @@ graph TD
 2. Install Dependencies `yarn install`
 3. Start Federated Services `yarn start-services`
 4. Start Gateway (Data Graph) `yarn start-gateway`
+5. Start Apollo Client Next.js App `yarn start-client`
 5. Visit `http://localhost:4000` in browser to launch GraphQL Playground (Graphiql)
 
 tip: if you need to kill any tcp ports `lsof -ti tcp:<PORT> | xargs kill` or `sudo kill -9 $(lsof -i :<PORT> -t)`
@@ -91,6 +92,24 @@ mutation {
 }
 ```
 
+## Apollo Persisted Queries
+
+Apollo servers features automatic persisted queries. Apollo Client will make a GET request utalizing a SHA256 hash to reference a query. If that query is not in memory on Apollo Server, it will respond with `"code": "PERSISTED_QUERY_NOT_FOUND"`, subsequently Apollo Client will then make a standard GraphQL POST request to Apollo Server with the same hash so that Apollo Server can save the query in memory.
+
+Redis, Memcached, or any standard key value store can be used to persist the data on your Apollo Server.  By default Apollo Server will utalize in-memory cache.
+
+Advatages include improved network performance by utalizing HTTP caching to reduce query string size on GET requests.
+
+Sample query string parameters sent on GET request
+
+```json
+{
+  "persistedQuery": {
+    "version":1,"sha256Hash":"3652ff3ed3e55b94ab31a26a3c65221f30df1432e80d6ebbd3cabf730eac3b94"
+  }
+}
+```
+
 ## Apollo Graph Manager
 
 [Apollo Graph Manager](https://www.apollographql.com/docs/graph-manager/) (formerly Apollo Engine) is a cloud service that helps you manage, validate, and secure your organization's data graph.
@@ -103,7 +122,7 @@ graph LR
 
 ### Publish Schema to Graph Manager
 
-note: use `npx` if not installed globally
+note: use `npx` if not installed globally, `npm install -g apollo`
 
 1. Run all services `yarn start-services` and gateway `yarn start-gateway`
 2. Login or create an account [Apollo Data Graph Manager](https://engine.apollographql.com/login).
@@ -120,3 +139,4 @@ TODO: connect to CI/CD process
 - [Apollo Server](https://github.com/apollographql/apollo-server)
 - [Apollo Federation](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-federation)
 - [Apollo Graph Manager](https://www.apollographql.com/docs/graph-manager/)
+- [Apollo Persisted Queries](https://github.com/apollographql/apollo-link-persisted-queries)
