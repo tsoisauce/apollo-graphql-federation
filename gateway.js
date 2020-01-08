@@ -17,7 +17,15 @@ const server = new ApolloServer({
   engine: {
     apiKey: process.env.ENGINE_API_KEY,
   },
-  persistedQueries: {}  // default in-memory cache
+  persistedQueries: {},  // default in-memory cache
+  formatError: error => {
+    console.log(error);
+    return error;
+  },
+  formatResponse: response => {
+    console.log(response);
+    return response;
+  },
 });
 
 server.listen().then(({ url }) => {
