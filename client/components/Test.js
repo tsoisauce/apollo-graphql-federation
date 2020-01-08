@@ -34,7 +34,9 @@ const Test = () => {
     )
   } else {
     return (
-      <h1>...loading</h1>
+      <>
+      <h3>...loading</h3>
+      </>
     )
   }
 }
