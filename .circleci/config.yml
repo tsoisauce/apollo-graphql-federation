@@ -28,6 +28,8 @@ jobs:
 
       - run: yarn install
 
+      - run: npx apollo service:push --serviceName="dev-customers" --serviceURL="http://customers-graphql.svc.cluster.local:4001/" --endpoint="http://localhost:4001/"
+
       - save_cache:
           paths:
             - node_modules
