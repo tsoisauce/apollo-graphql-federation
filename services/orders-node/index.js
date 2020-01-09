@@ -13,7 +13,21 @@ let orders = [
     id: "order-2",
     financialStatus: "refunded",
     fulfillmentStatus: "fulfilled",
-    customer: "janedoe@example.com",
+    customer: "johndoe@example.com",
+    lineItems: "widget:2"
+  },
+  {
+    id: "order-3",
+    financialStatus: "refunded",
+    fulfillmentStatus: "fulfilled",
+    customer: "erlichbachman@piedpiper.com",
+    lineItems: "widget:1"
+  },
+  {
+    id: "order-4",
+    financialStatus: "refunded",
+    fulfillmentStatus: "fulfilled",
+    customer: "jianyang@newpiedpiper.com",
     lineItems: "widget:2"
   }
 ];

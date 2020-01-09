@@ -6,13 +6,29 @@ let customers = [
     id: "customer-1",
     firstName: "John",
     lastName: "Doe",
-    email: "johndoe@example.com"
+    email: "johndoe@example.com",
+    avatar: "https://avatarfiles.alphacoders.com/203/thumb-203817.jpg"
   },
   {
     id: "customer-2",
     firstName: "Jane",
     lastName: "Doe",
-    email: "janedoe@example.com"
+    email: "janedoe@example.com",
+    avatar: "https://avatarfiles.alphacoders.com/944/thumb-94447.jpg"
+  },
+  {
+    id: "customer-3",
+    firstName: "Erlich",
+    lastName: "Bachman",
+    email: "erlichbachman@piedpiper.com",
+    avatar: "https://gitlab.com/uploads/-/system/group/avatar/83169/erlich.jpeg"
+  },
+  {
+    id: "customer-4",
+    firstName: "Jian",
+    lastName: "Yang",
+    email: "jianyang@newpiedpiper.com",
+    avatar: "http://siliconvalleyism.com/characters/jian-yang-small.jpg"
   }
 ];
 
@@ -40,6 +56,7 @@ const typeDefs = gql`
       firstName: String!
       lastName: String!
       email: String!
+      avatar: String!
     ): Customer
     """
     Deletes customer record by email
@@ -52,6 +69,7 @@ const typeDefs = gql`
     firstName: String!
     lastName: String!
     email: String!
+    avatar: String
   }
 `;
 
