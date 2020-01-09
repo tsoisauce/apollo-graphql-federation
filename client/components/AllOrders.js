@@ -1,31 +1,33 @@
-  
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
-const ALL_REVIEWS = gql`
+const ALL_ORDERS = gql`
   {
-    allReviews {
+    allOrders {
       id
-      title
-      review
-      rating
-      customer
-      avatar
+      financialStatus
+      fulfillmentStatus
+      customer {
+        id
+        email
+        firstName
+        lastName
+      }
     }
   }
 `;
 
-const AllReviews = () => {
-  const { loading, error, data, fetchMore } = useQuery(ALL_REVIEWS, {
+const AllOrders = () => {
+  const { loading, error, data, fetchMore } = useQuery(ALL_ORDERS, {
     notifyOnNetworkStatusChange: true
   });
-  
-  if (data && data.allReviews) {
-    const reviews = data.allReviews
+  console.log(data)
+  if (data && data.allOrders) {
+    const orders = data.allOrders
     return (
     <>
-      {reviews.map(product_review => {
-        const { id, title, review, avatar, customer } = product_review
+      {orders.map(order => {
+        const { id, financialStatus, fulfillmentStatus, customer } = order
         return (
           <div key={id} className="w-full lg:max-w-full lg:flex">
             <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
@@ -36,14 +38,8 @@ const AllReviews = () => {
                   </svg>
                   Reviews
                 </p>
-                <div className="text-gray-900 font-bold text-xl mb-2">{title}</div>
-                <p className="text-gray-700 text-base">{review}</p>
-              </div>
-              <div className="flex items-center">
-                <img className="w-10 h-10 rounded-full mr-4" src={avatar} />
-                <div className="text-sm">
-                  <p className="text-gray-900 leading-none">{customer}</p>
-                </div>
+                <div className="text-gray-900 font-bold text-xl mb-2">{financialStatus}</div>
+                <p className="text-gray-700 text-base">{fulfillmentStatus}</p>
               </div>
             </div>
           </div>
@@ -58,6 +54,6 @@ const AllReviews = () => {
       </>
     )
   }
-}
+};
 
-export default AllReviews;
+export default AllOrders;
