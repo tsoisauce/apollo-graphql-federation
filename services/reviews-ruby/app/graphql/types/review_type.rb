@@ -6,5 +6,6 @@ module Types
     field :title, String, null: false
     field :review, String, null: false
     field :customer, String, null: false
+    field :avatar, String, null: false
   end
 end
