@@ -7,8 +7,13 @@ const ALL_ORDERS = gql`
       id
       financialStatus
       fulfillmentStatus
+      lineItems {
+        sku
+        inStock
+        title
+        price
+      }
       customer {
-        id
         email
         firstName
         lastName
@@ -28,7 +33,9 @@ const AllOrders = () => {
     return (
     <>
       {orders.map(order => {
-        const { id, financialStatus, fulfillmentStatus, customer } = order
+        const { id, financialStatus, fulfillmentStatus } = order
+        const { email, firstName, lastName, avatar } = order.customer
+        const { sku, inStock, title, price } = order.lineItems
         return (
           <div key={id} className="w-full lg:max-w-full lg:flex">
             <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
@@ -39,13 +46,28 @@ const AllOrders = () => {
                   </svg>
                   Order
                 </p>
-                <div className="text-gray-900 font-bold text-xl mb-2">{financialStatus}</div>
-                <p className="text-gray-700 text-base">{fulfillmentStatus}</p>
+                <div className="text-gray-900 font-mono font-normal text-sm mb-2">
+                  <p className="font-bold text-lg">Status:</p>
+                  <p>order ref: {id}</p>
+                  <p>status: {financialStatus}</p>
+                  <p>fulfillment: {fulfillmentStatus}</p>
+                  <br />
+                  <div>
+                    <p className="font-bold text-lg">Product:</p>
+                    <ul className="list-inside">
+                      <li>title: {title}</li>
+                      <li>sku: {sku}</li>
+                      <li>stock: {inStock.toString()}</li>
+                      <li>price: ${(price/100).toFixed(2)}</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
               <div className="flex items-center">
-                <img className="w-10 h-10 rounded-full mr-4" src={customer.avatar} />
+                <img className="w-10 h-10 rounded-full mr-4" src={avatar} />
                 <div className="text-sm">
-                  <p className="text-gray-900 leading-none">{customer.email}</p>
+                  <p className="text-base antialiased font-semibold text-gray-900 leading-none">{firstName} {lastName}</p>
+                  <p className="text-sm text-gray-900 leading-none">{email}</p>
                 </div>
               </div>
             </div>

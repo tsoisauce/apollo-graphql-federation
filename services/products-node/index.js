@@ -4,14 +4,14 @@ const { buildFederatedSchema } = require("@apollo/federation");
 let products = [
   {
     id: "product-1",
-    title: "Widget 1",
+    title: "Super Product",
     sku: "widget:1",
     price: 1200,
     inStock: true
   },
   {
     id: "product-2",
-    title: "Widget 2",
+    title: "Awesome Thing",
     sku: "widget:2",
     price: 500,
     inStock: true

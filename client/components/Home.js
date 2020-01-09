@@ -1,11 +1,11 @@
-import AllReviews from "./AllReviews";
-import InfoReviews from "./InfoReviews";
-
 const Home = () => {
   return (
     <>
       <div className="container">
-        Home
+        <ul>
+          <li><a href="/all-orders">All Orders</a></li>
+          <li><a href="/all-reviews">All Reviews</a></li>
+        </ul>
       </div>
     </>
   )
