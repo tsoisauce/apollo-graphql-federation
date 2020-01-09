@@ -1,11 +1,11 @@
 import withData from "../lib/apollo";
-import Main from "../lib/layout";
+import Layout from "../lib/layout";
 import Test from "../components/Test";
 
 export default withData(props => {
   return (
-    <Main>
+    <Layout>
       <Test />
-    </Main>
+    </Layout>
   );
 });
