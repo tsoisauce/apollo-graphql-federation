@@ -8,7 +8,7 @@ const INFO_REVIEWS = gql`
   }
 `;
 
-const Test = () => {
+const InfoReviews = () => {
   const { loading, error, data, fetchMore } = useQuery(INFO_REVIEWS, {
     notifyOnNetworkStatusChange: true
   });
@@ -29,4 +29,4 @@ const Test = () => {
   }
 }
 
-export default Test;
+export default InfoReviews;

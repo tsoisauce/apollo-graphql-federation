@@ -25,9 +25,9 @@ const Test = () => {
     return (
     <>
       {reviews.map(product_review => {
-        const { title, review, avatar, customer } = product_review
+        const { id, title, review, avatar, customer } = product_review
         return (
-          <div key={review.id} className="w-full lg:max-w-full lg:flex">
+          <div key={id} className="w-full lg:max-w-full lg:flex">
             <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
               <div className="mb-8">
                 <p className="text-sm text-gray-600 flex items-center">
@@ -40,7 +40,7 @@ const Test = () => {
                 <p className="text-gray-700 text-base">{review}</p>
               </div>
               <div className="flex items-center">
-                <img class="w-10 h-10 rounded-full mr-4" src={avatar} />
+                <img className="w-10 h-10 rounded-full mr-4" src={avatar} />
                 <div className="text-sm">
                   <p className="text-gray-900 leading-none">{customer}</p>
                 </div>
